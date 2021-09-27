@@ -9,7 +9,7 @@ namespace ObligatoriskOpgave5
     public class FootballPlayer
     {
         //Static int that is used for generating unique ID's for all instances of this Class
-        private static int NextID;
+        private static int NextID = 1;
 
         //Properties of the Class
         public int ID { get; set; }

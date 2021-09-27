@@ -12,7 +12,7 @@ namespace ObligatoriskOpgave5
 {
     class Server
     {
-        private List<FootballPlayer> playerList = new List<FootballPlayer>() { new FootballPlayer("Lars", 234, 46), new FootballPlayer("Karl", 645, 73) };
+        private static List<FootballPlayer> playerList = new List<FootballPlayer>() { new FootballPlayer("Lars", 234, 46), new FootballPlayer("Karl", 645, 73) };
         public void Start()
         {
             TcpListener listen = new TcpListener(IPAddress.Loopback, 2121);
@@ -66,8 +66,10 @@ namespace ObligatoriskOpgave5
                 else if (Line1 == "hent") {
                     int id = Convert.ToInt32(Line2);
                     foreach (FootballPlayer player in playerList) {
-                        if (player.ID == id) sw.WriteLine(JsonConvert.SerializeObject(player));
-                        return;
+                        if (player.ID == id) {
+                            sw.WriteLine(JsonConvert.SerializeObject(player));
+                            return;
+                        }
                     }
                     return;
                 }
